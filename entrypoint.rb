@@ -23,7 +23,7 @@ end
 Dir.chdir('./../')
 #Dir.chdir('_site')
 Dir.mkdir('deploy')
-FileUtils.cp('./jekyll/_site', 'deploy/blog')
+FileUtils.copy_entry('./jekyll/_site', 'deploy/blog')
 
 File.open('.nojekyll', 'w') { |f| f.puts 'Skip Jekyll' }
 
@@ -31,7 +31,7 @@ Dir.chdir('./deploy')
 system_or_fail('git', 'init', '.')
 FileUtils.cp('../.git/config', '.git/config')
 FileUtils.remove_dir('../.git')
-FileUtils.cp('../*', '.')
+FileUtils.copy_entry('../*', '.')
 system_or_fail('git', 'config', 'user.name', ENV['GITHUB_ACTOR'])
 system_or_fail('git', 'config', 'user.email', "#{ENV['GITHUB_ACTOR']}@users.noreply.github.com")
 system_or_fail('git', 'fetch', '--no-tags', '--no-recurse-submodules', '--depth=1', 'origin', '+gh-pages:refs/remotes/origin/gh-pages')
