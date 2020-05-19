@@ -1,6 +1,6 @@
-# jekyll-deploy
+# Customized jekyll-deploy
 
-Builds and deploys a jekyll page to GitHub pages
+Builds and deploys a jekyll blog along with custom site to GitHub pages
 
 ## Usage
 
